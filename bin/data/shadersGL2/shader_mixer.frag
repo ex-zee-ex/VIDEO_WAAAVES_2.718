@@ -1371,18 +1371,20 @@ void main()
     vec2 fb0_coord=texCoordVarying;//vec2(texCoordVarying.x-center.x,texCoordVarying.y-center.y);
 	fb0_coord=kaleidoscope(fb0_coord,fb0KaleidoscopeSegments+fb0KaleidoscopeSegmentsTexmod*fb0Texmod,
                            fb0KaleidoscopeSlice+fb0KaleidoscopeSliceTexmod*fb0Texmod);
+	if(fb0HorizontalMirror==1){
+        if(fb0_coord.x>width/2){fb0_coord.x=abs(width-fb0_coord.x);}
+    }//endifhflip1
+    if(fb0VerticalMirror==1){
+        if(fb0_coord.y>height/2){fb0_coord.y=abs(height-fb0_coord.y);}
+    }//endifvflip1
+
 	fb0_coord-=center;
     fb0_coord=fb0_coord*(fb0_rescale.z+fb0RescaleTexmod.z*fb0Texmod);
     fb0_coord.xy=fb0_rescale.xy+fb0_coord.xy;
     fb0_coord.x=fb0RescaleTexmod.x*(fb0Texmod)+fb0_coord.x+center.x;
     fb0_coord.y=fb0RescaleTexmod.y*(fb0Texmod)+fb0_coord.y+center.y;
 
-    if(fb0HorizontalMirror==1){
-        if(fb0_coord.x>width/2){fb0_coord.x=abs(width-fb0_coord.x);}
-    }//endifhflip1
-    if(fb0VerticalMirror==1){
-        if(fb0_coord.y>height/2){fb0_coord.y=abs(height-fb0_coord.y);}
-    }//endifvflip1
+    
 
 	//test out with shear, fisheye, rotate, and spiral in different orders
 	fb0_coord=rotate(fb0_coord,fb0Rotate+fb0RotateTexmod*fb0Texmod,fb0RotateMode);
@@ -1434,18 +1436,20 @@ void main()
     vec2 fb1_coord=texCoordVarying;//vec2(texCoordVarying.x-center.x,texCoordVarying.y-center.y);
     fb1_coord=kaleidoscope(fb1_coord,fb1KaleidoscopeSegments+fb1KaleidoscopeSegmentsTexmod*fb1Texmod,
                            fb1KaleidoscopeSlice+fb1KaleidoscopeSliceTexmod*fb1Texmod);
+	if(fb1HorizontalMirror==1){
+        if(fb1_coord.x>width/2){fb1_coord.x=abs(width-fb1_coord.x);}
+    }//endifhflip1
+    if(fb1VerticalMirror==1){
+        if(fb1_coord.y>height/2){fb1_coord.y=abs(height-fb1_coord.y);}
+    }//endifvflip1
+
     fb1_coord-=center;
     fb1_coord=fb1_coord*(fb1_rescale.z+fb1RescaleTexmod.z*fb1Texmod);
     fb1_coord.xy=fb1_rescale.xy+fb1_coord.xy;
     fb1_coord.x=fb1RescaleTexmod.x*(fb1Texmod)+fb1_coord.x+center.x;
     fb1_coord.y=fb1RescaleTexmod.y*(fb1Texmod)+fb1_coord.y+center.y;
     
-    if(fb1HorizontalMirror==1){
-        if(fb1_coord.x>width/2){fb1_coord.x=abs(width-fb1_coord.x);}
-    }//endifhflip1
-    if(fb1VerticalMirror==1){
-        if(fb1_coord.y>height/2){fb1_coord.y=abs(height-fb1_coord.y);}
-    }//endifvflip1
+    
     
     //test out with shear, fisheye, rotate, and spiral in different orders
     fb1_coord=rotate(fb1_coord,fb1Rotate+fb1RotateTexmod*fb1Texmod,fb1RotateMode);
@@ -1499,18 +1503,20 @@ void main()
     vec2 fb2_coord=texCoordVarying;//vec2(texCoordVarying.x-center.x,texCoordVarying.y-center.y);
     fb2_coord=kaleidoscope(fb2_coord,fb2KaleidoscopeSegments+fb2KaleidoscopeSegmentsTexmod*fb2Texmod,
                            fb2KaleidoscopeSlice+fb2KaleidoscopeSliceTexmod*fb2Texmod);
-    fb2_coord-=center;
-    fb2_coord=fb2_coord*(fb2_rescale.z+fb2RescaleTexmod.z*fb2Texmod);
-    fb2_coord.xy=fb2_rescale.xy+fb2_coord.xy;
-    fb2_coord.x=fb2RescaleTexmod.x*(fb2Texmod)+fb2_coord.x+center.x;
-    fb2_coord.y=fb2RescaleTexmod.y*(fb2Texmod)+fb2_coord.y+center.y;
     
-    if(fb2HorizontalMirror==1){
+	if(fb2HorizontalMirror==1){
         if(fb2_coord.x>width/2){fb2_coord.x=abs(width-fb2_coord.x);}
     }//endifhflip1
     if(fb2VerticalMirror==1){
         if(fb2_coord.y>height/2){fb2_coord.y=abs(height-fb2_coord.y);}
     }//endifvflip1
+	fb2_coord-=center;
+    fb2_coord=fb2_coord*(fb2_rescale.z+fb2RescaleTexmod.z*fb2Texmod);
+    fb2_coord.xy=fb2_rescale.xy+fb2_coord.xy;
+    fb2_coord.x=fb2RescaleTexmod.x*(fb2Texmod)+fb2_coord.x+center.x;
+    fb2_coord.y=fb2RescaleTexmod.y*(fb2Texmod)+fb2_coord.y+center.y;
+    
+   
     
     //test out with shear, fisheye, rotate, and spiral in different orders
     fb2_coord=rotate(fb2_coord,fb2Rotate+fb2RotateTexmod*fb2Texmod,fb2RotateMode);
@@ -1556,18 +1562,20 @@ void main()
     vec2 fb3_coord=texCoordVarying;//vec2(texCoordVarying.x-center.x,texCoordVarying.y-center.y);
     fb3_coord=kaleidoscope(fb3_coord,fb3KaleidoscopeSegments+fb3KaleidoscopeSegmentsTexmod*fb3Texmod,
                            fb3KaleidoscopeSlice+fb3KaleidoscopeSliceTexmod*fb3Texmod);
-    fb3_coord-=center;
-    fb3_coord=fb3_coord*(fb3_rescale.z+fb3RescaleTexmod.z*fb3Texmod);
-    fb3_coord.xy=fb3_rescale.xy+fb3_coord.xy;
-    fb3_coord.x=fb3RescaleTexmod.x*(fb3Texmod)+fb3_coord.x+center.x;
-    fb3_coord.y=fb3RescaleTexmod.y*(fb3Texmod)+fb3_coord.y+center.y;
     
-    if(fb3HorizontalMirror==1){
+	if(fb3HorizontalMirror==1){
         if(fb3_coord.x>width/2){fb3_coord.x=abs(width-fb3_coord.x);}
     }//endifhflip1
     if(fb3VerticalMirror==1){
         if(fb3_coord.y>height/2){fb3_coord.y=abs(height-fb3_coord.y);}
     }//endifvflip1
+	fb3_coord-=center;
+    fb3_coord=fb3_coord*(fb3_rescale.z+fb3RescaleTexmod.z*fb3Texmod);
+    fb3_coord.xy=fb3_rescale.xy+fb3_coord.xy;
+    fb3_coord.x=fb3RescaleTexmod.x*(fb3Texmod)+fb3_coord.x+center.x;
+    fb3_coord.y=fb3RescaleTexmod.y*(fb3Texmod)+fb3_coord.y+center.y;
+    
+    
     
     //test out with shear, fisheye, rotate, and spiral in different orders
     fb3_coord=rotate(fb3_coord,fb3Rotate+fb3RotateTexmod*fb3Texmod,fb3RotateMode);
